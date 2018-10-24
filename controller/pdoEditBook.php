@@ -6,11 +6,13 @@ date_default_timezone_set('Australia/Brisbane');//set time zone to Brisbane
 
 if (!empty([$_POST])) {
   //input sanitisation via sanitise() function
+  $authorid= !empty($_POST['authorid']) ? sanitise(($_POST['authorid'])): null;
+  $bookid= !empty($_POST['bookid']) ? sanitise(($_POST['bookid'])): null;
   $name = !empty($_POST['name'])? sanitise(($_POST['name'])): null; 
   $surname = !empty($_POST['surname'])? sanitise(($_POST['surname'])): null;
   $nationality = !empty($_POST['nationality'])? sanitise(($_POST['nationality'])): null;
   $yob = !empty($_POST['yob']) ? sanitise(($_POST['yob'])): null;
-  $yod = !empty($_POST['yod']) ? sanitise(($_POST['yod'])): null;
+  $yod = !empty($_POST['yod']) ? sanitise(($_POST['yod'])): null; 
   $bt = !empty($_POST['bt']) ? sanitise(($_POST['bt'])): null;
   $ot = !empty($_POST['ot']) ? sanitise(($_POST['ot'])): null;
   $yop = !empty($_POST['yop']) ? sanitise(($_POST['yop'])): null;
@@ -24,37 +26,16 @@ if (!empty([$_POST])) {
 
   //print_r($_POST); //test if it works up to this point
 
-  if($_POST['actiontype'] == 'addbook') {
-    $query = $conn->prepare("SELECT * FROM author WHERE name = :name AND surname = :surname");
-    $query->bindValue(':name', $name);
-    $query->bindValue(':surname', $surname);
-    $query->execute();
-    $row = $query->fetch(PDO::FETCH_ASSOC);
-    $authorId = $row['AuthorID'];
-    if ($query->rowCount() < 1) { //rowCount() < 1 means author does not exist in the database, both author and book will be added.      
-      try {
-        addAuthorBook($name, $surname, $nationality, $yob, $yod, $bt, $ot, $yop, $genre, $sold, $lan, $cip, $actiontype, $userid, $date);
-        $_SESSION['message'] = "Author and Book added successfully";
-        header('location:../view/pages/adminBookCentral.php');
-      }
-      catch(PDOException $e) { 
-        echo "Book creation problems".$e -> getMessage();
-        die();
-      }
+  if($_POST['actiontype'] == 'editbook') {
+    try {
+      editBook($authorid, $bookid, $name, $surname, $nationality, $yob, $yod, $bt, $ot, $yop, $genre, $sold, $lan, $cip, $actiontype, $userid, $date);
+      $_SESSION['message'] = "Book updated successfully";
+      header('location:../view/pages/adminBookCentral.php');
     }
-    else { //else means author already exists in the database, only the book will be added.
-      echo "Author id is:". $authorId; //test if it works up to this point
-      try {
-        addBookOnly($bt, $ot, $yop, $genre, $sold, $lan, $authorId, $cip, $actiontype, $userid, $date);
-        $_SESSION['message'] = "Book added successfully";
-        header('location:../view/pages/adminBookCentral.php');
-      }
-      catch(PDOException $e) { 
-        echo "Book creation problems".$e -> getMessage();
-        die();
-      }  
+    catch(PDOException $e) { 
+      echo "Book creation problems".$e -> getMessage();
+      die();
     }
-    exit;
   }
 }
 ?>

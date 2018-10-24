@@ -10,9 +10,8 @@ require("../../model/dbFunctions.php");
 
 if (isset($_SESSION['login']) == true) {
 
-include ("header.php");
-?>
-  
+  include ("header.php");
+  ?>  
   <article>
     <div class="bigholder">
       <?php 
@@ -40,23 +39,14 @@ include ("header.php");
       if ( $action == 'addusers' ) {
         include ("registration.php");
       }
+    } else {
+      include ("showbooks.php");
     }
   ?>
   </article>
-  <div class="contentRight">right </div>
-  <footer>
-  <p><?php 
-  print_r($_SESSION);
-  print_r($_GET);
-  print_r($_POST);
-  ?></p>
-  </footer>
-</div>
-</body>
-</html> <?php
-
-}  
-else  {
+  <?php
+  include ("footer.php");
+} else  {
   header("location:../../index.php");  
 }
 ?>

@@ -104,6 +104,50 @@ function addBookOnly($bt, $ot, $yop, $genre, $sold, $lan, $authorId, $cip, $acti
     }
 }
 
+function editBook($authorid, $bookid, $name, $surname, $nationality, $yob, $yod, $bt, $ot, $yop, $genre, $sold, $lan, $cip, $actiontype, $userid, $date) {
+    global $conn;
+    try {
+        $conn->beginTransaction(); //SQL transaction
+        //step 1: update author table
+        $editauthor = "UPDATE author SET Name=:name, Surname=:surname, Nationality=:nationality, BirthYear=:yob, DeathYear=:yob WHERE AuthorID=:authorid";
+        $stmt = $conn->prepare($editauthor);
+        $stmt->bindValue(':name', $name);
+        $stmt->bindValue(':surname', $surname);
+        $stmt->bindValue(':nationality', $nationality);
+        $stmt->bindValue(':yob', $yob);
+        $stmt->bindValue(':yod', $yod);
+        $stmt->execute();
+        $lastAuthorId = $conn->lastInsertId();
+        //step 2: update book table
+        $editbook = "UPDATE book SET BookTitle=:bt, OriginalTitle=:ot, YearofPublication=:yop, Genre=:genre, MillionsSold=:sold, LanguageWritten=:lan, AuthorID=:authorid, coverImagePath=:cip WHERE BookID=:bookid";
+        $stmt = $conn->prepare($editbook);
+        $stmt->bindValue(':bt', $bt);
+        $stmt->bindValue(':ot', $ot);
+        $stmt->bindValue(':yop', $yop);
+        $stmt->bindValue(':genre', $genre);
+        $stmt->bindValue(':sold', $sold);
+        $stmt->bindValue(':lan', $lan);
+        $stmt->bindValue(':authorId', $lastAuthorId);
+        $stmt->bindValue(':cip', $cip);
+        $stmt->execute();
+        $lastBookId = $conn->lastInsertId();
+        //step 3: insert into edit record (log) table
+        $newlog =  "INSERT INTO editrecord(userID, bookID, time, actionType) VALUES (:userid, :bookid, :date, :actiontype)";
+        $stmt = $conn->prepare($newlog);
+        $stmt->bindValue(':userid', $userid);
+        $stmt->bindValue(':bookid', $lastBookId);
+        $stmt->bindValue(':date', $date);
+        $stmt->bindValue(':actiontype', $actiontype);
+        $stmt->execute();
+        //step 4: commit the above 3 steps
+        $conn->commit();   
+    }
+    catch(PDOException $ex) { 
+        $conn->rollBack();
+        throw $ex;
+    }
+}
+
 function sanitise($data) {
     $data = trim($data);
     $data = stripslashes($data);

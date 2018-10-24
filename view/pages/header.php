@@ -11,9 +11,9 @@
     <?php echo '<br>Welcome <strong> '.$_SESSION['login'].'!</strong> You have successfully logged in. <a href="../../controller/pdoLogout.php">Logout</a>';?>
   </header>
   <nav class="nav">
-    <div class="menuItem"><a href="#">HOME</a></div>
-    <div class="menuItem">ABOUT US</div>
-    <div class="menuItem">PRODUCTS</div>
+    <div class="menuItem"><a href="?link=showbooks">SHOW BOOKS</a></div>
+    <div class="menuItem"><a href="?link=addbooks">ADD A BOOK</a></div>
+    <div class="menuItem"><a href="?link=addusers">ADD A USER</a></div>
     <div class="menuItem">CONTACT</div>
   </nav>
   <div class="contentLeft">left
