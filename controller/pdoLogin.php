@@ -8,14 +8,15 @@ if (!empty([$_POST])) {
     $password = !empty($_POST['password'])? sanitise(($_POST['password'])): null;
     //print_r($_POST);
     try {
-        $stmt = $conn->prepare("SELECT password FROM login WHERE username=:user");
+        $stmt = $conn->prepare("SELECT * FROM login WHERE username=:user");
         $stmt->bindParam(':user', $username);
         $stmt->execute();
         $rows = $stmt -> fetch();        
         if (password_verify($password, $rows['password'])) {
             // assign session variables
-            $_SESSION['login'] = $username;  
-            $_SESSION['time_start_login'] = time();
+            $_SESSION['login'] = $rows['username'];  
+            $_SESSION['userid'] = $rows['loginID'];  
+            $_SESSION['time_start_login'] = time('H:i:s');
             
             header('location:../view/pages/adminBookCentral.php');
         }

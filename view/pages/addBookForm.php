@@ -1,4 +1,3 @@
-
 <div class="bigholder">
 	<h1>Add a new book</h1>
 	<form action="../../controller/pdoAddBook.php"  method="post">
@@ -13,7 +12,7 @@
 			<label>Year of Birth:</label>
 			<input type="text" name=yob required><br><br>	
 			<label>Year of Death:</label>
-			<input type="text" name=yod required><br><br>	
+			<input type="text" name=yod><br><br>	
 		</fieldset>
 		<fieldset>
 			<legend>Book details</legend>
@@ -22,23 +21,17 @@
 			<label>Original Title:</label>
 			<input type="text" name=ot><br><br>
 			<label>Year of Publication:</label>		
-			<input type="text" name=yop><br><br>	
+			<input type="text" name=yop required><br><br>	
 			<label>Genre:</label>		
-			<input type="text" name=genre><br><br>	
+			<input type="text" name=genre required><br><br>
 			<label>Millions Sold:</label>		
-			<input type="text" name=sold><br><br>	
+			<input type="text" name=sold required><br><br>	
 			<label>Language Written:</label>		
-			<input type="text" name=lan><br><br>	
+			<input type="text" name=lan required><br><br>	
 			<label>Cover Image Path:</label>		
-			<input type="text" name=cip><br><br>	
-			<input type="hidden" name="actiontype" value="addbook"/>
+			<input type="text" name=cip required><br><br>	
+			<input type="hidden" name="actiontype" value="addbook">
 			<input type="submit">
 		</fieldset>
 	</form>
 </div>
-
-
-
-
-
-

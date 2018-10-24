@@ -43,7 +43,7 @@ if (!empty([$_POST])) {
       }
     }
     else { //else means author already exists in the database, only the book will be added.
-      //echo "Author id is:". $authorId; //test if it works up to this point
+      echo "Author id is:". $authorId; //test if it works up to this point
       try {
         addBookOnly($bt, $ot, $yop, $genre, $sold, $lan, $authorId, $cip, $actiontype, $userid, $date);
         $_SESSION['message'] = "Book added successfully";
