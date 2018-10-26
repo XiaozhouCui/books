@@ -22,7 +22,7 @@ if (!empty([$_POST])) {
         if ($query->rowCount() < 1) {
             try {
                 addUser($username, $password, $role, $name, $surname, $email);
-                header('location:../index.php');
+                header('location:../view/pages/adminBookCentral.php');
             }
             catch(PDOException $e) { 
                 echo "Account creation problems".$e -> getMessage();

@@ -26,7 +26,7 @@ function addUser($username, $password, $role, $name, $surname, $email) {
     }
 }
 
-function addAuthorBook($name, $surname, $nationality, $yob, $yod, $bt, $ot, $yop, $genre, $sold, $lan, $cip, $actiontype, $userid, $date) {
+function addAuthorBook($name, $surname, $nationality, $yob, $yod, $bt, $ot, $yop, $genre, $sold, $lan, $cip, $actiontype, $loginid, $date) {
     global $conn;
     try {
         $conn->beginTransaction(); //SQL transaction
@@ -54,9 +54,9 @@ function addAuthorBook($name, $surname, $nationality, $yob, $yod, $bt, $ot, $yop
         $stmt->execute();
         $lastBookId = $conn->lastInsertId();
         //step 3: insert into edit record (log) table
-        $newlog =  "INSERT INTO editrecord(userID, bookID, time, actionType) VALUES (:userid, :bookid, :date, :actiontype)";
+        $newlog =  "INSERT INTO editrecord(loginID, bookID, time, actionType) VALUES (:loginid, :bookid, :date, :actiontype)";
         $stmt = $conn->prepare($newlog);
-        $stmt->bindValue(':userid', $userid);
+        $stmt->bindValue(':loginid', $loginid);
         $stmt->bindValue(':bookid', $lastBookId);
         $stmt->bindValue(':date', $date);
         $stmt->bindValue(':actiontype', $actiontype);
@@ -70,7 +70,7 @@ function addAuthorBook($name, $surname, $nationality, $yob, $yod, $bt, $ot, $yop
     }
 }
 
-function addBookOnly($bt, $ot, $yop, $genre, $sold, $lan, $authorId, $cip, $actiontype, $userid, $date) {
+function addBookOnly($bt, $ot, $yop, $genre, $sold, $lan, $authorId, $cip, $actiontype, $loginid, $date) {
     global $conn;
     try {
         $conn->beginTransaction(); //SQL transaction
@@ -88,9 +88,9 @@ function addBookOnly($bt, $ot, $yop, $genre, $sold, $lan, $authorId, $cip, $acti
         $stmt->execute();
         $lastBookId = $conn->lastInsertId();
         //step 2: insert into edit record (log) table
-        $newlog =  "INSERT INTO editrecord(userID, bookID, time, actionType) VALUES (:userid, :bookid, :date, :actiontype)";
+        $newlog =  "INSERT INTO editrecord(loginID, bookID, time, actionType) VALUES (:loginid, :bookid, :date, :actiontype)";
         $stmt = $conn->prepare($newlog);
-        $stmt->bindValue(':userid', $userid);
+        $stmt->bindValue(':loginid', $loginid);
         $stmt->bindValue(':bookid', $lastBookId);
         $stmt->bindValue(':date', $date);
         $stmt->bindValue(':actiontype', $actiontype);
@@ -104,22 +104,22 @@ function addBookOnly($bt, $ot, $yop, $genre, $sold, $lan, $authorId, $cip, $acti
     }
 }
 
-function editBook($authorid, $bookid, $name, $surname, $nationality, $yob, $yod, $bt, $ot, $yop, $genre, $sold, $lan, $cip, $actiontype, $userid, $date) {
+function editBook($authorid, $name, $surname, $nationality, $yob, $yod, $bookid, $bt, $ot, $yop, $genre, $sold, $lan, $cip, $actiontype, $loginid, $date) {
     global $conn;
     try {
         $conn->beginTransaction(); //SQL transaction
         //step 1: update author table
-        $editauthor = "UPDATE author SET Name=:name, Surname=:surname, Nationality=:nationality, BirthYear=:yob, DeathYear=:yob WHERE AuthorID=:authorid";
-        $stmt = $conn->prepare($editauthor);
+        $editauthor = "UPDATE author SET Name = :name, Surname = :surname, Nationality = :nationality, BirthYear = :yob, DeathYear = :yod WHERE AuthorID = :authorid";        
+        $stmt = $conn->prepare($editauthor);        
         $stmt->bindValue(':name', $name);
-        $stmt->bindValue(':surname', $surname);
-        $stmt->bindValue(':nationality', $nationality);
-        $stmt->bindValue(':yob', $yob);
-        $stmt->bindValue(':yod', $yod);
+        $stmt->bindValue(':surname', $surname);        
+        $stmt->bindValue(':nationality', $nationality);        
+        $stmt->bindValue(':yob', $yob);        
+        $stmt->bindValue(':yod', $yod);        
+        $stmt->bindValue(':authorid', $authorid);        
         $stmt->execute();
-        $lastAuthorId = $conn->lastInsertId();
         //step 2: update book table
-        $editbook = "UPDATE book SET BookTitle=:bt, OriginalTitle=:ot, YearofPublication=:yop, Genre=:genre, MillionsSold=:sold, LanguageWritten=:lan, AuthorID=:authorid, coverImagePath=:cip WHERE BookID=:bookid";
+        $editbook = "UPDATE book SET BookTitle = :bt, OriginalTitle = :ot, YearofPublication = :yop, Genre = :genre, MillionsSold = :sold, LanguageWritten = :lan, AuthorID = :authorid, coverImagePath = :cip WHERE BookID = :bookid";        
         $stmt = $conn->prepare($editbook);
         $stmt->bindValue(':bt', $bt);
         $stmt->bindValue(':ot', $ot);
@@ -127,15 +127,15 @@ function editBook($authorid, $bookid, $name, $surname, $nationality, $yob, $yod,
         $stmt->bindValue(':genre', $genre);
         $stmt->bindValue(':sold', $sold);
         $stmt->bindValue(':lan', $lan);
-        $stmt->bindValue(':authorId', $lastAuthorId);
+        $stmt->bindValue(':authorid', $authorid);
         $stmt->bindValue(':cip', $cip);
+        $stmt->bindValue(':bookid', $bookid);        
         $stmt->execute();
-        $lastBookId = $conn->lastInsertId();
         //step 3: insert into edit record (log) table
-        $newlog =  "INSERT INTO editrecord(userID, bookID, time, actionType) VALUES (:userid, :bookid, :date, :actiontype)";
+        $newlog =  "INSERT INTO editrecord(loginID, bookID, time, actionType) VALUES (:loginid, :bookid, :date, :actiontype)";
         $stmt = $conn->prepare($newlog);
-        $stmt->bindValue(':userid', $userid);
-        $stmt->bindValue(':bookid', $lastBookId);
+        $stmt->bindValue(':loginid', $loginid);
+        $stmt->bindValue(':bookid', $bookid);
         $stmt->bindValue(':date', $date);
         $stmt->bindValue(':actiontype', $actiontype);
         $stmt->execute();

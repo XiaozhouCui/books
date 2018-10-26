@@ -15,7 +15,8 @@ if (!empty([$_POST])) {
         if (password_verify($password, $rows['password'])) {
             // assign session variables
             $_SESSION['login'] = $rows['username'];  
-            $_SESSION['userid'] = $rows['loginID'];  
+            $_SESSION['loginid'] = $rows['loginID'];  
+            $_SESSION['level'] = $rows['access_level'];  
             $_SESSION['time_start_login'] = time('H:i:s');
             
             header('location:../view/pages/adminBookCentral.php');

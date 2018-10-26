@@ -4,7 +4,7 @@ require("../model/db.php");
 require("../model/dbFunctions.php");
 date_default_timezone_set('Australia/Brisbane');//set time zone to Brisbane
 
-if (!empty([$_POST])) {
+if ($_POST['actiontype'] == 'editbook') {
   //input sanitisation via sanitise() function
   $authorid= !empty($_POST['authorid']) ? sanitise(($_POST['authorid'])): null;
   $bookid= !empty($_POST['bookid']) ? sanitise(($_POST['bookid'])): null;
@@ -21,21 +21,27 @@ if (!empty([$_POST])) {
   $lan = !empty($_POST['lan']) ? sanitise(($_POST['lan'])): null;
   $cip = !empty($_POST['cip']) ? sanitise(($_POST['cip'])): null; 
   $actiontype = !empty($_POST['actiontype']) ? sanitise(($_POST['actiontype'])): null;
-  $userid = $_SESSION['userid']; //record the account who add this book
+  $loginid = $_SESSION['loginid']; //record the account who add this book
   $date = date('Y-m-d H:i:s'); //record current date and time
 
   //print_r($_POST); //test if it works up to this point
 
-  if($_POST['actiontype'] == 'editbook') {
+  if($_SESSION['level'] == 'Admin') {
     try {
-      editBook($authorid, $bookid, $name, $surname, $nationality, $yob, $yod, $bt, $ot, $yop, $genre, $sold, $lan, $cip, $actiontype, $userid, $date);
+      editBook($authorid, $name, $surname, $nationality, $yob, $yod, $bookid, $bt, $ot, $yop, $genre, $sold, $lan, $cip, $actiontype, $loginid, $date);
       $_SESSION['message'] = "Book updated successfully";
       header('location:../view/pages/adminBookCentral.php');
     }
     catch(PDOException $e) { 
-      echo "Book creation problems".$e -> getMessage();
-      die();
+      echo "Book updating problems".$e -> getMessage();
+      //die();
     }
+  } else {
+    $_SESSION['message'] = "Sorry, only an administrator can edit a book.";
+    header('location:../view/pages/adminBookCentral.php');
   }
+} else {
+  $_SESSION['message'] = "This is not the correct web form for book editing, please use the right form.";
+  header('location:../view/pages/adminBookCentral.php');
 }
 ?>

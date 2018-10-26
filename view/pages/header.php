@@ -16,11 +16,4 @@
     <div class="menuItem"><a href="?link=addusers">ADD A USER</a></div>
     <div class="menuItem">CONTACT</div>
   </nav>
-  <div class="contentLeft">left
-    <ul>
-      <li><a href="?link=showbooks">Show Books</a></li>
-      <li><a href="?link=addbooks">Add Books</a></li>
-      <li><a href="?link=showusers">Show Users</a></li>
-      <li><a href="?link=addusers">Add Users</a></li>
-    </ul>
-  </div>
+  <div class="contentLeft">left</div>

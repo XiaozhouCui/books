@@ -19,7 +19,7 @@ if (!empty([$_POST])) {
   $lan = !empty($_POST['lan']) ? sanitise(($_POST['lan'])): null;
   $cip = !empty($_POST['cip']) ? sanitise(($_POST['cip'])): null; 
   $actiontype = !empty($_POST['actiontype']) ? sanitise(($_POST['actiontype'])): null;
-  $userid = $_SESSION['userid']; //record the account who add this book
+  $loginid = $_SESSION['loginid']; //record the account who add this book
   $date = date('Y-m-d H:i:s'); //record current date and time
 
   //print_r($_POST); //test if it works up to this point
@@ -33,7 +33,7 @@ if (!empty([$_POST])) {
     $authorId = $row['AuthorID'];
     if ($query->rowCount() < 1) { //rowCount() < 1 means author does not exist in the database, both author and book will be added.      
       try {
-        addAuthorBook($name, $surname, $nationality, $yob, $yod, $bt, $ot, $yop, $genre, $sold, $lan, $cip, $actiontype, $userid, $date);
+        addAuthorBook($name, $surname, $nationality, $yob, $yod, $bt, $ot, $yop, $genre, $sold, $lan, $cip, $actiontype, $loginid, $date);
         $_SESSION['message'] = "Author and Book added successfully";
         header('location:../view/pages/adminBookCentral.php');
       }
@@ -45,7 +45,7 @@ if (!empty([$_POST])) {
     else { //else means author already exists in the database, only the book will be added.
       //echo "Author id is:". $authorId; //test if it works up to this point
       try {
-        addBookOnly($bt, $ot, $yop, $genre, $sold, $lan, $authorId, $cip, $actiontype, $userid, $date);
+        addBookOnly($bt, $ot, $yop, $genre, $sold, $lan, $authorId, $cip, $actiontype, $loginid, $date);
         $_SESSION['message'] = "Book added successfully";
         header('location:../view/pages/adminBookCentral.php');
       }
