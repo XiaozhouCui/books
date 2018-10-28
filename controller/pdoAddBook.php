@@ -22,8 +22,6 @@ if (!empty([$_POST])) {
   $loginid = $_SESSION['loginid']; //record the account who add this book
   $date = date('Y-m-d H:i:s'); //record current date and time
 
-  //print_r($_POST); //test if it works up to this point
-
   if($_POST['actiontype'] == 'addbook') {
     $query = $conn->prepare("SELECT * FROM author WHERE name = :name AND surname = :surname");
     $query->bindValue(':name', $name);
@@ -43,7 +41,6 @@ if (!empty([$_POST])) {
       }
     }
     else { //else means author already exists in the database, only the book will be added.
-      //echo "Author id is:". $authorId; //test if it works up to this point
       try {
         addBookOnly($bt, $ot, $yop, $genre, $sold, $lan, $authorId, $cip, $actiontype, $loginid, $date);
         $_SESSION['message'] = "Book added successfully";

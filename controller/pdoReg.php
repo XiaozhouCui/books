@@ -7,7 +7,6 @@ if ($_SESSION['level'] == 'Admin' ) {
   if (!empty([$_POST])) {
     //input sanitation via sanitise() function
     $username = !empty($_POST['username'])? sanitise(($_POST['username'])): null; 
-    // "?" means if it is true, ":" means else
     $mypass = !empty($_POST['password'])? sanitise(($_POST['password'])): null;
     $password = password_hash($mypass, PASSWORD_DEFAULT); //hash the password
     $role = !empty($_POST['role']) ? sanitise(($_POST['role'])): null;

@@ -1,9 +1,9 @@
 <?php
 session_start();
-if((time() - $_SESSION['time_start_login']) > 1800) {
+if((time() - $_SESSION['time_start_login']) > 1200) {
   header("location: ../../controller/pdoLogout.php");
 } else {
-  $_SESSION['time_start_login'] = time('H:i:s');
+  $_SESSION['time_start_login'] = time();
 } 
 require("../../model/db.php");
 require("../../model/dbFunctions.php");

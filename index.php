@@ -15,7 +15,7 @@
     <div class="menuItem">PRODUCTS</div>
     <div class="menuItem">CONTACT</div>
   </nav>
-  <div class="contentLeft">left </div>
+  <div class="contentLeft"></div>
   <article>
     <div class="bigholder">
         <h2>Login Form</h2>
@@ -23,9 +23,9 @@
             <fieldset>
                 <legend>Admin Login</legend>
                 <label>Username:</label>
-                <input type="text" maxlength="50" name="username" required><br><br>
+                <input type="text" name="username" required><br><br>
                 <label>Password:</label>
-                <input type="password" maxlength="50" name="password" required><br><br>
+                <input type="text" name="password" required><br><br>
                 <input type="submit" value=" Login ">
             </fieldset>
         </form>
@@ -34,7 +34,7 @@
       <h2>Default login: username "admin", password "admin"</h2>
     </div>
   </article>
-  <div class="contentRight">right </div>
+  <div class="contentRight"></div>
   <footer>
     <p>footer</p>
   </footer>

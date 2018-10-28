@@ -15,5 +15,5 @@ catch(PDOException $e) {
     <p>Error message: <?php echo $error_message; ?></p>
     <?php
     exit(); // or die();
-}
-
+} 
+?>
