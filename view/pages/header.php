@@ -16,4 +16,4 @@
     <div class="menuItem"><a href="?link=addusers">ADD A USER</a></div>
     <div class="menuItem"><a href="?link=showlog">UPDATE HISTORY</a></div>
   </nav>
-  <div class="contentLeft">left</div>
+  <div class="contentLeft"></div>

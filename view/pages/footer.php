@@ -1,4 +1,4 @@
-<div class="contentRight">right </div>
+<div class="contentRight"></div>
   <footer>
   <p><?php 
     print_r($_SESSION);

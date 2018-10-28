@@ -23,9 +23,9 @@
             <fieldset>
                 <legend>Admin Login</legend>
                 <label>Username:</label>
-                <input type="text" name="username" required><br><br>
+                <input type="text" maxlength="50" name="username" required><br><br>
                 <label>Password:</label>
-                <input type="text" name="password" required><br><br>
+                <input type="password" maxlength="50" name="password" required><br><br>
                 <input type="submit" value=" Login ">
             </fieldset>
         </form>

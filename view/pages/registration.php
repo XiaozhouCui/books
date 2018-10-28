@@ -4,9 +4,9 @@
 		<fieldset>
 			<legend>Login details</legend>
 			<label>Username:</label>
-			<input type="text" name=username required><br><br>
+			<input type="text" maxlength="50" name=username required><br><br>
 			<label>Password:</label>
-			<input type="text" name=password required><br><br>
+			<input type="password" name=password required><br><br>
 			<label>Role:</label>		
 			<input type="radio" name=role value="Admin"> Admin
 			<input type="radio" name=role value="User"> User<br><br>
@@ -14,11 +14,11 @@
 		<fieldset>
 			<legend>Personal details</legend>
 			<label>Name:</label>
-			<input type="text" name=name required><br><br>
+			<input type="text" maxlength="50" name=name required><br><br>
 			<label>Surname:</label>
-			<input type="text" name=surname required><br><br>	
+			<input type="text" maxlength="50" name=surname required><br><br>	
 			<label>Email:</label>
-			<input type="text" name=email required><br><br>	
+			<input type="email" name=email required><br><br>	
 			<input type="hidden" name="actiontype" value="reg"/>
 			<input type="submit">			
 			<input type="button" onclick="location.href='?link=showbooks';" value="Cancel" />
