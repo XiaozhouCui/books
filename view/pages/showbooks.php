@@ -13,10 +13,10 @@ echo "The bookshelf is empty.";
       <figure>  
         <img src="<?php echo $row['coverImagePath']; ?>">
           <figcaption>
-            <?php echo $row['BookTitle']; ?><br>
-            <?php echo '<p class="black">'. $row['MillionsSold']."Million Sold". '</p>'; ?><br>
-            <a href="?link=edit&BookID=<?php echo $row['BookID']; ?>">Edit</a><br>
-            <a href="?link=delete&BookID=<?php echo $row['BookID']; ?>">Delete</a><br>
+            <p class="black"><?php echo $row['BookTitle']; ?></p>
+            <p class="black"><?php echo $row['MillionsSold']; ?> Millions Sold</p><br>
+            <a style="color:blue" href="?link=editbook&BookID=<?php echo $row['BookID']; ?>">Edit</a>
+            <a style="color:blue" href="?link=delbook&BookID=<?php echo $row['BookID']; ?>">Delete</a>
           </figcaption>
       </figure>
     </div>  

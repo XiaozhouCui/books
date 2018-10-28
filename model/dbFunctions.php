@@ -148,6 +148,33 @@ function editBook($authorid, $name, $surname, $nationality, $yob, $yod, $bookid,
     }
 }
 
+function delBook($bookid, $actiontype, $loginid, $date) {
+    global $conn;
+    try {
+        $conn->beginTransaction(); //SQL transaction
+        //step 1: insert into edit record (log) table
+        $newlog =  "INSERT INTO editrecord(loginID, bookID, time, actionType) VALUES (:loginid, :bookid, :date, :actiontype)";
+        $stmt = $conn->prepare($newlog);
+        $stmt->bindValue(':loginid', $loginid);
+        $stmt->bindValue(':bookid', $bookid);
+        $stmt->bindValue(':date', $date);
+        $stmt->bindValue(':actiontype', $actiontype);
+        $stmt->execute();
+        print_r($_POST);
+        //step 2: delete book table
+        $delbook = "DELETE FROM book WHERE BookID = :bookid";
+        $stmt = $conn->prepare($delbook);
+        $stmt->bindValue(':bookid', $bookid);
+        $stmt->execute();
+        //step 3: commit the above 2 steps
+        $conn->commit();   
+    }
+    catch(PDOException $ex) { 
+        $conn->rollBack();
+        throw $ex;
+    }
+}
+
 function sanitise($data) {
     $data = trim($data);
     $data = stripslashes($data);

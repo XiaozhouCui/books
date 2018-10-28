@@ -40,7 +40,8 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
 			<label>Cover Image Path:</label>		
 			<input type="text" name=cip value="<?php echo $result['coverImagePath'] ?>" required><br><br>	
 			<input type="hidden" name="actiontype" value="editbook"/>
-			<input type="submit">
+			<input type="submit" value="OK">
+			<input type="button" onclick="location.href='?link=showbooks';" value="Cancel" />
 		</fieldset>
 	</form>
 </div>

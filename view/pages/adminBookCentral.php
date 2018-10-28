@@ -30,8 +30,11 @@ if (isset($_SESSION['login']) == true) {
       if ( $action == 'addbooks' ) {
         include ("addBookForm.php");
       }
-      if ( $action == 'edit' ) {
+      if ( $action == 'editbook' ) {
         include ("editBookForm.php");
+      }
+      if ( $action == 'delbook' ) {
+        include ("delBookForm.php");
       }
       if ( $action == 'showusers' ) {
         include ("showusers.php");

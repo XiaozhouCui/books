@@ -4,7 +4,7 @@ require("../model/db.php");
 require("../model/dbFunctions.php");
 date_default_timezone_set('Australia/Brisbane');//set time zone to Brisbane
 
-if ($_POST['actiontype'] == 'editbook') {
+if (!empty([$_POST])) {
   //input sanitisation via sanitise() function
   $authorid= !empty($_POST['authorid']) ? sanitise(($_POST['authorid'])): null;
   $bookid= !empty($_POST['bookid']) ? sanitise(($_POST['bookid'])): null;
@@ -26,7 +26,7 @@ if ($_POST['actiontype'] == 'editbook') {
 
   //print_r($_POST); //test if it works up to this point
 
-  if($_SESSION['level'] == 'Admin') {
+  if($_POST['actiontype'] == 'editbook') {
     try {
       editBook($authorid, $name, $surname, $nationality, $yob, $yod, $bookid, $bt, $ot, $yop, $genre, $sold, $lan, $cip, $actiontype, $loginid, $date);
       $_SESSION['message'] = "Book updated successfully";
@@ -34,14 +34,11 @@ if ($_POST['actiontype'] == 'editbook') {
     }
     catch(PDOException $e) { 
       echo "Book updating problems".$e -> getMessage();
-      //die();
+      die();
     }
   } else {
-    $_SESSION['message'] = "Sorry, only an administrator can edit a book.";
+    $_SESSION['message'] = "This is not the correct form for book editing, please use the right form.";
     header('location:../view/pages/adminBookCentral.php');
   }
-} else {
-  $_SESSION['message'] = "This is not the correct web form for book editing, please use the right form.";
-  header('location:../view/pages/adminBookCentral.php');
 }
 ?>

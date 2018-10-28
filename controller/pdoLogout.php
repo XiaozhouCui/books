@@ -11,7 +11,6 @@ else  {
     session_destroy(); 
     echo '<br>';
     echo 'You have successfully logged out <br>';
-    echo "<br><a href='../index.php'>Login again</a>";
-    //echo 'The remaining session variable is:  '.$_SESSION['login'].'<br>';
+    header("location:../index.php");
 }
 ?>

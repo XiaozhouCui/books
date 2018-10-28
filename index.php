@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
 <head>
@@ -16,12 +17,6 @@
   </nav>
   <div class="contentLeft">left </div>
   <article>
-    <div class="holder"><img src="view/images/apple.jpg" alt=""/></div>
-    <div class="holder"><img src="view/images/apple.jpg" alt=""/></div>
-    <div class="holder"><img src="view/images/apple.jpg" alt=""/></div>
-    <div class="holder"><img src="view/images/apple.jpg" alt=""/></div>
-    <div class="holder"><img src="view/images/apple.jpg" alt=""/></div>
-
     <div class="bigholder">
         <h2>Login Form</h2>
         <form action="controller/pdoLogin.php" method="post">
@@ -35,13 +30,6 @@
             </fieldset>
         </form>
     </div>
-    <div class="bigholder">
-        <a href = "view/pages/registration.php">Registration</a>
-    </div>
-    <div class="bigholder">
-        <?php //include("view/pages/adminBookCentral.php"); ?>
-    </div>
-
   </article>
   <div class="contentRight">right </div>
   <footer>

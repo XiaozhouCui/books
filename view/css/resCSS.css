@@ -69,11 +69,6 @@ footer {
   align-items:center;
   background-color: antiquewhite;
 }
-.holder{
-	width:25%;
-	height:auto;
-	float:left;
-}
 
 .bigholder {
 	width:100%;
@@ -81,9 +76,48 @@ footer {
 	float:left;
 }
 
+.holder{
+	width:33%;
+	min-height:600px;
+	float:left;
+}
+
 .holder img {
 	width:100%;
 	height:100%;
+	box-sizing: border-box;
+	border: 1px solid black;
+}
+
+figure {
+	width: 80%;
+	margin: 5% auto;
+	background-color: antiquewhite;
+}
+
+figcaption { /*keep the buttons at the bottom of figcaption*/
+	min-height: 150px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end; 
+	justify-content: space-around;
+}
+
+.holder a { /*style the edit and del buttons*/
+	box-sizing: border-box;
+	border: 1px solid black;
+	border-radius: 5px;
+	width: 50%;
+	display: flex;
+	justify-content: center;	
+	line-height: 40px;
+	text-align: center;		
+	background-color: gainsboro;
+}
+
+.black {
+	font-size: 1em;
+	width: 100%;
 }
 
 a:link, a:active, a:visited{
@@ -91,35 +125,35 @@ a:link, a:active, a:visited{
   text-decoration: none;
 }
 
-@media only screen and (max-width: 900px) {
-.flex-container {
-	width:100%;
-}
-.nav{
-	order:1;
-}
-.header{
-	order:2;
-}
-.contentLeft, .contentRight{
-	display:none;
-}
+@media only screen and (max-width: 1100px) {
+	.flex-container {
+		width:100%;
+	}
+	.nav {
+		order:1;
+	}
+	.header {
+		order:2;
+	}
+	.contentLeft, .contentRight {
+		display:none;
+	}
 }
 
-@media only screen and (max-width: 500px) {
-.flex-container {
-	width:100%;
-}
-.holder{
-	width:100%;
-}
-.contentLeft, .contentRight{
-	display:none;
-}
-.nav{
-	height:auto;
-}
-.menuItem{
-	width:100%;
-}
+@media only screen and (max-width: 600px) {
+	.flex-container {
+		width:100%;
+	}
+	.holder {
+		width:100%;		
+	}
+	.contentLeft, .contentRight {
+		display:none;
+	}
+	.nav {
+		height:auto;
+	}
+	.menuItem {
+		width:100%;
+	}
 }
