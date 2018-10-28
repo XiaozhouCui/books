@@ -32,6 +32,7 @@
 			<input type="text" name=cip required><br><br>	
 			<input type="hidden" name="actiontype" value="addbook">
 			<input type="submit">
+			<input type="button" onclick="location.href='?link=showbooks';" value="Cancel" />
 		</fieldset>
 	</form>
 </div>

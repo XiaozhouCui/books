@@ -1,6 +1,6 @@
 <?php 
 
-  $showbooks = "SELECT BookID, BookTitle, MillionsSold, coverImagePath FROM book ORDER BY MillionsSold DESC";
+  $showbooks = "SELECT * FROM book INNER JOIN author ON book.AuthorID = author.AuthorID ORDER BY MillionsSold DESC";
   $stmt = $conn->prepare($showbooks);
   $stmt->execute();
   $result = $stmt->fetchAll();
@@ -13,7 +13,9 @@ echo "The bookshelf is empty.";
       <figure>  
         <img src="<?php echo $row['coverImagePath']; ?>">
           <figcaption>
-            <p class="black"><?php echo $row['BookTitle']; ?></p>
+            <p class="black">Title: <?php echo $row['BookTitle']; ?></p>
+            <p class="black">Publication: <?php echo $row['YearofPublication']; ?></p>
+            <p class="black">Author: <?php echo $row['Name']." ".$row['Surname']; ?></p>
             <p class="black"><?php echo $row['MillionsSold']; ?> Millions Sold</p><br>
             <a style="color:blue" href="?link=editbook&BookID=<?php echo $row['BookID']; ?>">Edit</a>
             <a style="color:blue" href="?link=delbook&BookID=<?php echo $row['BookID']; ?>">Delete</a>

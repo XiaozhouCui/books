@@ -42,6 +42,9 @@ if (isset($_SESSION['login']) == true) {
       if ( $action == 'addusers' ) {
         include ("registration.php");
       }
+      if ( $action == 'showlog' ) {
+        include ("booklog.php");
+      }
     } else {
       include ("showbooks.php");
     }

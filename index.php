@@ -21,7 +21,7 @@
         <h2>Login Form</h2>
         <form action="controller/pdoLogin.php" method="post">
             <fieldset>
-                <legend> Admin Login</legend>
+                <legend>Admin Login</legend>
                 <label>Username:</label>
                 <input type="text" name="username" required><br><br>
                 <label>Password:</label>
@@ -29,6 +29,9 @@
                 <input type="submit" value=" Login ">
             </fieldset>
         </form>
+    </div>
+    <div class="bigholder">
+      <h2>Default login: username "admin", password "admin"</h2>
     </div>
   </article>
   <div class="contentRight">right </div>

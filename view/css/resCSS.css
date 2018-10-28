@@ -16,6 +16,9 @@ html{
 	width:80%;
 	min-height:100%;
 	margin:0 auto;
+	background-image:url(../images/background.jpg);
+	background-size: cover;
+	background-position: center;  
 }
 .header {
 	width:100%;
@@ -38,27 +41,30 @@ html{
 	float:left;
 	background-color:rgba(0,0,0,1.00);
 	color:#FFF;
+	transition: transform 1s, background 1s, font-size 1s;
 }
 .menuItem:hover{
 	background-color:rgba(255,0,0,1.00);
+	transform: scale(1, 1.2);
+	
 }
 article{
   display:flex;
   flex-wrap:wrap;
   order: 4;
   flex: 1 60%;
-  background-color:#FFF;
+  background-color: rgba(245, 248, 235, 0.65);
 }
 
 .contentLeft {
   order: 3;
   flex: 1 20%;
-  background-color:rgba(207,174,102,1.00);
+  background-color:rgb(170, 219, 155);
 }
 .contentRight{
   order: 5;
   flex: 1 20%;
-  background-color:rgba(228,233,206,1.00);
+  background-color:rgb(170, 219, 155);
 }
 footer {
   display:flex;
@@ -96,7 +102,7 @@ figure {
 }
 
 figcaption { /*keep the buttons at the bottom of figcaption*/
-	min-height: 150px;
+	min-height: 200px;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: flex-end; 
@@ -155,5 +161,8 @@ a:link, a:active, a:visited{
 	}
 	.menuItem {
 		width:100%;
+	}
+	.menuItem:hover{
+		transform: scale(1.1, 1);
 	}
 }

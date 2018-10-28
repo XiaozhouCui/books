@@ -20,7 +20,8 @@
 			<label>Email:</label>
 			<input type="text" name=email required><br><br>	
 			<input type="hidden" name="actiontype" value="reg"/>
-			<input type="submit">
+			<input type="submit">			
+			<input type="button" onclick="location.href='?link=showbooks';" value="Cancel" />
 		</fieldset>
 </form>
 </div>
