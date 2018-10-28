@@ -2,7 +2,7 @@
   <br><h1>Last Updated Date</h1>
 </div>
 <?php 
-$editlog = "SELECT book.BookTitle, editrecord.actionType, max(editrecord.time) AS time FROM editrecord INNER JOIN book ON editrecord.bookID = book.BookID WHERE actionType = 'editbook' GROUP BY book.bookID  ORDER BY time DESC";
+$editlog = "SELECT * FROM editrecord INNER JOIN book ON editrecord.bookID = book.BookID INNER JOIN user ON editrecord.loginID = user.login_id WHERE time IN (SELECT MAX(time) FROM editrecord GROUP BY bookID ) HAVING actionType = 'editbook' ORDER BY time DESC";
 $stmt1 = $conn->prepare($editlog);
 $stmt1->execute();
 $result = $stmt1->fetchAll();
@@ -11,7 +11,7 @@ if($stmt1->rowCount()< 1 ) {
 echo "No book has been updated.";
 } else {
   foreach($result as $row) {
-    echo '<p class="black">Title: "'. $row['BookTitle'].'" Last Updated On: '. $row['time'];
+    echo '<p class="black">Book: "'. $row['BookTitle'].'" Last Updated by: "'.$row['name'].' '. $row['surname'].'" On: "'. $row['time'].'".';
   }
 }
 ?>

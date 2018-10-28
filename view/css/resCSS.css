@@ -52,13 +52,13 @@ article{
   display:flex;
   flex-wrap:wrap;
   order: 4;
-  flex: 1 80%;
+  flex: 1 100%;
   background-color: rgba(245, 248, 235, 0.65);
 }
 
 .contentLeft {
   order: 3;
-  flex: 1 20%;
+  flex: 1 0%;
   background-color:rgb(170, 219, 155);
 }
 .contentRight{
