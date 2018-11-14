@@ -103,6 +103,7 @@ figure {
 
 figcaption { /*keep the buttons at the bottom of figcaption*/
 	min-height: 200px;
+	padding: 10px;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: flex-end; 
@@ -121,6 +122,34 @@ figcaption { /*keep the buttons at the bottom of figcaption*/
 	background-color: gainsboro;
 }
 
+label{
+	width:37%;
+	float:left;
+	text-align:right;
+	padding:0.5%;
+	margin:0.5%;
+	font-size:1em;
+}
+input[type="text"],input[type="email"]{
+	width:50%;
+	float:left;
+	padding:1%;
+	margin:0.5%;
+	font-size:1em;
+	border:1px solid #B19898;
+	border-radius:2%;
+}
+input[type="submit"], input[type='button']{
+	float:right;
+	padding:1.5%;
+	font-size:1.2em;
+	border-radius: 12%;
+	width:15%;
+	background-color:#231A1A;
+	color:white;
+	margin-top:1.5em;
+	margin-right: 2%;
+}
 .black {
 	font-size: 1em;
 	width: 100%;
@@ -150,6 +179,24 @@ a:link, a:active, a:visited{
 }
 
 @media only screen and (max-width: 600px) {
+	label{
+		width:95%;
+		float:left;
+		text-align:left;
+		padding:0.5%;
+		margin:0.5%;
+		font-size:1em;
+	}
+	input[type="text"],input[type="email"]{
+		width:95%;
+		float:left;
+		padding:1%;
+		margin:0.5%;
+		font-size:1em;
+		border:1px solid #B19898;
+		border-radius:2%;
+	}
+
 	.flex-container {
 		width:100%;
 	}

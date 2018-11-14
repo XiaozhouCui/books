@@ -9,12 +9,6 @@
 <body>
 <div class="flex-container">
   <header class="nav">header </header>
-  <nav class="nav">
-    <div class="menuItem"><a href="#home">HOME</a></div>
-    <div class="menuItem">ABOUT US</div>
-    <div class="menuItem">PRODUCTS</div>
-    <div class="menuItem">CONTACT</div>
-  </nav>
   <div class="contentLeft"></div>
   <article>
     <div class="bigholder">
