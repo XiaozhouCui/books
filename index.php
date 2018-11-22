@@ -8,21 +8,25 @@
 </head>
 <body>
 <div class="flex-container">
-  <header class="nav">header </header>
+  <header class="header">
+    <h1>My Books</h1>
+  </header>
   <div class="contentLeft"></div>
   <article>
     <div class="bigholder">
-        <h2>Login Form</h2>
-        <form action="controller/pdoLogin.php" method="post">
-            <fieldset>
-                <legend>Admin Login</legend>
-                <label>Username:</label>
-                <input type="text" name="username" required><br><br>
-                <label>Password:</label>
-                <input type="text" name="password" required><br><br>
-                <input type="submit" value=" Login ">
-            </fieldset>
-        </form>
+      <h2>Login Form</h2>
+      <form action="controller/pdoLogin.php" method="post">
+        <fieldset>
+          <div class="inputs">
+            <legend>Admin Login</legend>
+            <label>Username:</label>
+            <input type="text" name="username" required>
+            <label>Password:</label>
+            <input type="text" name="password" required>
+          </div>
+          <input type="submit" value=" Login ">
+        </fieldset>
+      </form>
     </div>
     <div class="bigholder">
       <h2>Default login: username "admin", password "admin"</h2>
@@ -30,7 +34,7 @@
   </article>
   <div class="contentRight"></div>
   <footer>
-    <p>footer</p>
+    <p>Copyright &copy; www.joesdemosite.com 2018</p>
   </footer>
 </div>
 </body>

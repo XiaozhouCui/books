@@ -1,10 +1,6 @@
 <div class="contentRight"></div>
   <footer>
-  <p><?php 
-    print_r($_SESSION);
-    print_r($_GET);
-    print_r($_POST);
-  ?></p>
+  <p>Copyright &copy; www.joesdemosite.com 2018</p>
   </footer>
 </div>
 </body>
