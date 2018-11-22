@@ -11,6 +11,9 @@ else  {
     session_destroy(); 
     echo '<br>';
     echo 'You have successfully logged out <br>';
-    header("location:../index.php");
+    echo
+    '<script type="text/javascript">',
+    'window.location.replace("../index.php");',
+    '</script>';
 }
 ?>

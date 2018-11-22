@@ -8,7 +8,7 @@
 <body>
 <div class="flex-container">
   <header class="header">
-    <?php echo 'Welcome <strong>'.$_SESSION['login'].'!</strong> You have successfully logged in. <a style="color:blue" href="../../controller/pdoLogout.php">Logout</a>';?>
+     <p>Welcome <b><?php echo $_SESSION['login'] ?></b>! You have successfully logged in. <a style="color:blue" href="../../controller/pdoLogout.php">Logout</a>
   </header>
   <nav class="nav">
     <div class="menuItem"><a href="?link=showbooks">SHOW BOOKS</a></div>

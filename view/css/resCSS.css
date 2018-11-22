@@ -50,9 +50,8 @@ html{
 	transition: transform 1s, background 1s, font-size 1s;
 }
 .menuItem:hover{
-	background-color:rgba(255,0,0,1.00);
-	transform: scale(1, 1.2);
-	
+	background-color:rgba(255,0,0,1.00);	
+	cursor: pointer;
 }
 article{
   display:flex;
@@ -105,7 +104,7 @@ footer {
 figure {
 	width: 80%;
 	margin: 5% auto;
-	background-color: antiquewhite;
+	background-color: rgba(250, 235, 215, 0.6);
 }
 
 figcaption { /*keep the buttons at the bottom of figcaption*/
@@ -139,7 +138,7 @@ fieldset {
 	border: 2px solid gray;
 	border-radius: 10px;
 	min-height: 300px;
-	background-color: rgba(196, 228, 255, 0.3);
+	background-color: rgba(211, 211, 211, 0.4);
 }
 
 
@@ -249,8 +248,5 @@ a:link, a:active, a:visited{
 	}
 	.menuItem {
 		width:100%;
-	}
-	.menuItem:hover{
-		transform: scale(1.1, 1);
 	}
 }
