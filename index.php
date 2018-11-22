@@ -17,19 +17,14 @@
       <h2>Login Form</h2>
       <form action="controller/pdoLogin.php" method="post">
         <fieldset>
-          <div class="inputs">
-            <legend>Admin Login</legend>
-            <label>Username:</label>
-            <input type="text" name="username" required>
-            <label>Password:</label>
-            <input type="text" name="password" required>
-          </div>
+          <legend><h3>Admin Login</h3></legend>
+          <label>Username:</label>
+          <input type="text" name="username" placeholder="admin" required>
+          <label>Password:</label>
+          <input type="text" name="password" placeholder="admin" required>
           <input type="submit" value=" Login ">
         </fieldset>
       </form>
-    </div>
-    <div class="bigholder">
-      <h2>Default login: username "admin", password "admin"</h2>
     </div>
   </article>
   <div class="contentRight"></div>
