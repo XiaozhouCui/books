@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 require("../model/db.php");
 require("../model/dbFunctions.php");

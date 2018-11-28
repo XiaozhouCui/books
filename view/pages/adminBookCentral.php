@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 if((time() - $_SESSION['time_start_login']) > 1200) {
   header("location: ../../controller/pdoLogout.php");
